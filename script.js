@@ -9,17 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
   ]).then(startVideo)
   
   function startVideo() {
-    navigator.mediaDevices.getUserMedia(
-      { video: true },
-      stream => {
-        if ('srcObject' in video) {
-          video.srcObject = stream
-        } else {
-          video.src = stream
-        }
-      },
-      err => console.error(err)
-    )
+    navigator.mediaDevices.getUserMedia({ video: {} }).then(function (stream) {
+      const videoEl = document.querySelector('#inputVideo')
+      videoEl.srcObject = stream
+    })
   }
   
   video.addEventListener('play', () => {
