@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const video = document.getElementById('video')
+  const video = document.querySelector('#video')
 
   Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   function startVideo() {
     navigator.mediaDevices.getUserMedia({ video: {} }).then(function (stream) {
-      const videoEl = document.querySelector('#video')
-      videoEl.srcObject = stream
+      video.srcObject = stream
     })
   }
   
