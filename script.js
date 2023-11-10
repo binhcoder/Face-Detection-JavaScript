@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   function startVideo() {
     navigator.mediaDevices.getUserMedia({ video: {} }).then(function (stream) {
-      const videoEl = document.querySelector('#inputVideo')
+      const videoEl = document.querySelector('#video')
       videoEl.srcObject = stream
     })
   }
