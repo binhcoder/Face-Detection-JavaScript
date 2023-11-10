@@ -11,7 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
   function startVideo() {
     navigator.mediaDevices.getUserMedia(
       { video: true },
-      stream => video.srcObject = stream,
+      stream => {
+        if ('srcObject' in video) {
+          video.srcObject = stream
+        } else {
+          video.src = stream
+        }
+      },
       err => console.error(err)
     )
   }
